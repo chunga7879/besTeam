@@ -7,6 +7,9 @@ import com.example.besTeamAt.service.CategoryService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @Service
 public class CategoryServiceImpl implements CategoryService {
     private CategoryDAO categoryDAO;
@@ -33,5 +36,26 @@ public class CategoryServiceImpl implements CategoryService {
     public CategoryDto deactivate(Long id) throws Exception {
         Category category = categoryDAO.deactivateCategory(id);
         return category.toDto();
+    }
+
+    @Override
+    public List<CategoryDto> findAll() {
+        List<CategoryDto> lists = new ArrayList<>();
+        categoryDAO.getAll().forEach(categoryDAO -> lists.add(categoryDAO.toDto()));
+        return lists;
+    }
+
+    @Override
+    public List<CategoryDto> getAllActivate() {
+        List<CategoryDto> lists = new ArrayList<>();
+        categoryDAO.getAllActivate().forEach(categoryDAO -> lists.add(categoryDAO.toDto()));
+        return lists;
+    }
+
+    @Override
+    public List<CategoryDto> getAllDeactivate() {
+        List<CategoryDto> lists = new ArrayList<>();
+        categoryDAO.getAllDeactivate().forEach(categoryDAO -> lists.add(categoryDAO.toDto()));
+        return lists;
     }
 }

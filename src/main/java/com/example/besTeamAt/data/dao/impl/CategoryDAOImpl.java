@@ -6,6 +6,8 @@ import com.example.besTeamAt.data.repository.CategoryRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class CategoryDAOImpl implements CategoryDAO {
     private CategoryRepository categoryRepository;
@@ -30,5 +32,20 @@ public class CategoryDAOImpl implements CategoryDAO {
     public Category activateCategory(Long id) throws Exception {
         categoryRepository.IsDestroyed(id, false);
         return categoryRepository.findById(id).orElseThrow(() -> new Exception("category by id not exist"));
+    }
+
+    @Override
+    public List<Category> getAll() {
+        return categoryRepository.findAll();
+    }
+
+    @Override
+    public List<Category> getAllActivate() {
+        return categoryRepository.findAllByIsDestroyedEquals(false);
+    }
+
+    @Override
+    public List<Category> getAllDeactivate() {
+        return categoryRepository.findAllByIsDestroyedEquals(true);
     }
 }
