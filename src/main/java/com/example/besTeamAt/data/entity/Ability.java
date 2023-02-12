@@ -2,10 +2,7 @@ package com.example.besTeamAt.data.entity;
 
 
 import com.example.besTeamAt.data.dto.AbilityDto;
-import lombok.Generated;
-import lombok.Getter;
-import lombok.Setter;
-import lombok.ToString;
+import lombok.*;
 
 import javax.persistence.*;
 
@@ -13,16 +10,24 @@ import javax.persistence.*;
 @Getter
 @Setter
 @ToString
+@NoArgsConstructor
+
 @Table(name = "ability")
 public class Ability {
     @Id
     @GeneratedValue
-    private Long Id;
+    private Long id;
 
     @Column(unique = true, nullable = false)
     private String name;
 
+    @Builder
+    public Ability(Long id, String name) {
+        this.id = id;
+        this.name = name;
+    }
+
     public AbilityDto toDto() {
-        return AbilityDto.builder().name(name).build();
+        return AbilityDto.builder().id(id).name(name).build();
     }
 }

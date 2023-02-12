@@ -8,5 +8,6 @@ import lombok.Setter;
 @Setter
 @Builder
 public class AbilityDto {
+    private Long id;
     private String name;
 }
