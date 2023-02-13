@@ -8,7 +8,7 @@ public interface ProjectDAO {
 
     Project save(Project project);
 
-    Project getById(Long id);
+    Project getById(Long id) throws Exception;
 
     List<Project> getByUserId(Long userId);
 }

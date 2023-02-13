@@ -4,10 +4,9 @@ import com.example.besTeam.data.dto.*;
 import com.example.besTeam.service.ProjectService;
 import com.example.besTeam.validation.ProjectValidation;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.Map;
 
 @RestController
 @RequestMapping("/api/v1/projects")
@@ -21,13 +20,15 @@ public class ProjectController {
     }
 
 
-//    @PostMapping(value = "/create")
-//    public ProjectDto create(@RequestBody CreateProjectDto createProjectDto) throws Exception {
-//        ProjectValidation.checkProjectRoleNumber(createProjectDto.getNumPerGroup(), createProjectDto.getRoles());
-//
-//        ProjectDto project = projectService.create(createProjectDto.getName(), createProjectDto.getCategoryId(), createProjectDto.getNumPerGroup(), createProjectDto.getUserId());
-//
-//        return project;
-//    }
+    @PostMapping(value = "/create")
+    public ProjectDto create(@RequestBody ProjectDto projectDto) throws Exception {
+        ProjectValidation.checkProjectRoleNumber(projectDto.getNumPerGroup(), projectDto.getRoles());
+        return projectService.create(projectDto.getUser(), projectDto.getName(), projectDto.getCategory(), projectDto.getNumPerGroup(), projectDto.getRoles());
+    }
+
+    @GetMapping(value = "/{id}")
+    public ProjectDto getById(@PathVariable Long id) throws Exception {
+        return projectService.getById(id);
+    }
 
 }

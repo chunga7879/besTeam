@@ -18,19 +18,9 @@ public class RoleController {
     }
 
     @PostMapping(value = "/create")
-    public RoleDto create(@RequestBody Map<String, Object> requestBody) throws Exception {
-        if (!(requestBody.get("name") instanceof String)) {
-            throw new Exception("It does not get correct type of role name");
-        }
+    public RoleDto create(@RequestBody RoleDto roleDto) throws Exception {
 
-        if (!(requestBody.get("abilities") instanceof List)) {
-            throw new Exception("It does not get correct type of abilities");
-        }
-
-        String name = (String) requestBody.get("name");
-        List<String> abilities = (List<String>) requestBody.get("abilities");
-
-        return roleService.createRole(name, abilities);
+        return roleService.createRole(roleDto.getName(), roleDto.getAbilities());
     }
 
     // role update abilities

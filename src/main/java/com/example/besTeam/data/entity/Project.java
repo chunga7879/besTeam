@@ -1,12 +1,16 @@
 package com.example.besTeam.data.entity;
 
 import com.example.besTeam.data.dto.ProjectDto;
+import com.example.besTeam.data.dto.ProjectRoleDto;
+import com.example.besTeam.data.dto.RoleDto;
 import lombok.*;
 
 import javax.persistence.*;
 import javax.validation.constraints.Min;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 @Entity
 @Getter
@@ -35,7 +39,11 @@ public class Project extends BaseEntity{
     private User user;
 
     @OneToMany(mappedBy = "project", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-    private List<ProjectRole> roles = new ArrayList<>();
+    private List<ProjectRole> projectRoles = new ArrayList<>();
+
+    public void addProjectRole(ProjectRole projectRole) {
+        projectRoles.add(projectRole);
+    }
 
     @Builder
     public Project(Long id, String name, Category category, Integer numPerGroup, User user) {
@@ -47,11 +55,19 @@ public class Project extends BaseEntity{
     }
 
     public ProjectDto toDto(){
+        List<ProjectRoleDto> roles = new ArrayList<>();
+
+        for (ProjectRole projectRole : projectRoles) {
+            roles.add(projectRole.toDto());
+        }
+
         return ProjectDto.builder()
+                .id(id)
                 .name(name)
                 .numPerGroup(numPerGroup)
                 .category(category.toDto())
                 .user(user.toDto())
+                .roles(roles)
                 .build();
     }
 }

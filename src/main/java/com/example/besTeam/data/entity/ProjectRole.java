@@ -1,8 +1,7 @@
 package com.example.besTeam.data.entity;
 
-import lombok.Getter;
-import lombok.Setter;
-import lombok.ToString;
+import com.example.besTeam.data.dto.ProjectRoleDto;
+import lombok.*;
 import org.hibernate.annotations.ColumnDefault;
 
 import javax.persistence.*;
@@ -12,9 +11,11 @@ import javax.validation.constraints.Min;
 @Getter
 @Setter
 @ToString
+@NoArgsConstructor
+@Table(name = "project_role", uniqueConstraints = {@UniqueConstraint(name = "ProjectAndRole", columnNames = { "project_id", "role_id" })})
 public class ProjectRole {
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     @ManyToOne
@@ -29,4 +30,15 @@ public class ProjectRole {
     @Min(value = 1)
     @Column(nullable = false)
     private Integer numForRole;
+
+    @Builder
+    public ProjectRole(Project project, Role role, Integer numForRole) {
+        this.project = project;
+        this.role = role;
+        this.numForRole = numForRole;
+    }
+
+    public ProjectRoleDto toDto() {
+        return ProjectRoleDto.builder().role(role.toDto()).numForRole(numForRole).id(id).build();
+    }
 }

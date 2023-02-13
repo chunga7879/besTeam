@@ -11,8 +11,8 @@ import java.util.Map;
 @Builder
 public class CreateProjectDto {
     private String name;
-    private Long categoryId;
+    private CategoryDto category;
     private Integer numPerGroup;
-    private Long userId; // TODO: USING AUTH LATER
-    private Map<Long, Integer> roles; // roleId - num for this role
+    private UserDto user; // TODO: USING AUTH LATER
+    private Map<String, Integer> roles;
 }

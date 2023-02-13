@@ -16,7 +16,7 @@ import java.util.List;
 @Table(name = "role")
 public class Role extends BaseEntity {
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     @Column(nullable = false, length = 50)
@@ -35,6 +35,10 @@ public class Role extends BaseEntity {
         abilities.add(ability);
     }
 
+    public void addProjectRole(ProjectRole projectRole) {
+        projectRoles.add(projectRole);
+    }
+
     @Builder
     public Role(Long id, String name) {
         this.id = id;
@@ -42,14 +46,14 @@ public class Role extends BaseEntity {
     }
 
     public RoleDto toDto(){
-        List<AbilityDto> abilityDtos = new ArrayList<>();
+        List<String> abilityNames = new ArrayList<>();
         for (Ability ability : abilities) {
-            abilityDtos.add(ability.toDto());
+            abilityNames.add(ability.getName());
         }
         return RoleDto.builder()
                 .id(id)
                 .name(name)
-                .abilities(abilityDtos)
+                .abilities(abilityNames)
                 .build();
     }
 }

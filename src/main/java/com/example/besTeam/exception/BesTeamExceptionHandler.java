@@ -22,6 +22,7 @@ public class BesTeamExceptionHandler {
         map.put("error type", httpStatus.getReasonPhrase());
         map.put("code", "400");
         map.put("message", "error occured");
+        map.put("detail message", e.getMessage());
 
         return new ResponseEntity<>(map, responseHeader, httpStatus);
     }

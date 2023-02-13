@@ -10,5 +10,5 @@ import java.util.List;
 public class RoleDto {
     private Long id;
     private String name;
-    private List<AbilityDto> abilities;
+    private List<String> abilities;
 }

@@ -19,8 +19,8 @@ public class CategoryController {
     }
 
     @PostMapping(value = "/create")
-    public CategoryDto create(@Valid @RequestBody String name) {
-        return categoryService.create(name);
+    public CategoryDto create(@RequestBody CategoryDto categoryDto) {
+        return categoryService.create(categoryDto.getName());
     }
 
     @GetMapping(value = "/{id}")

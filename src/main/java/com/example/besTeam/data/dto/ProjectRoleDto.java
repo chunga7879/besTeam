@@ -4,15 +4,11 @@ import lombok.Builder;
 import lombok.Getter;
 import lombok.Setter;
 
-import java.util.List;
-
 @Getter
 @Setter
 @Builder
-public class CategoryDto {
+public class ProjectRoleDto {
     private Long id;
-    private String name;
-    private boolean isDestroyed;
-    private List<RoleDto> roles;
-
+    private RoleDto role;
+    private Integer numForRole;
 }

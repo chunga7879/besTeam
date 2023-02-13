@@ -35,4 +35,9 @@ public class UserServiceImpl implements UserService {
 
         return user.toDto();
     }
+
+    @Override
+    public UserDto getById(UserDto userDto) throws Exception {
+        return userDAO.getById(userDto.getId()).toDto();
+    }
 }

@@ -1,14 +1,18 @@
 package com.example.besTeam.validation;
 
+import com.example.besTeam.data.dto.ProjectRoleDto;
+import com.example.besTeam.data.dto.RoleDto;
+
+import java.util.List;
 import java.util.Map;
 
 public class ProjectValidation {
 
-    public static void checkProjectRoleNumber(Integer numPerGroup, Map<Long, Integer> roles) throws Exception {
+    public static void checkProjectRoleNumber(Integer numPerGroup, List<ProjectRoleDto> roles) throws Exception {
         int totalNumberInProjectRole = 0;
 
-        for (Integer i : roles.values()) {
-            totalNumberInProjectRole += i;
+        for (ProjectRoleDto pr : roles) {
+            totalNumberInProjectRole += pr.getNumForRole();
         }
 
         if (numPerGroup < totalNumberInProjectRole) {

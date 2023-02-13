@@ -17,7 +17,7 @@ import java.util.List;
 @Table(name = "user")
 public class User extends BaseEntity {
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     @Column(nullable = false, length = 50)
@@ -57,6 +57,7 @@ public class User extends BaseEntity {
 
     public UserDto toDto(){
         return UserDto.builder()
+                .id(id)
                 .name(name)
                 .email(email)
                 .password(password)

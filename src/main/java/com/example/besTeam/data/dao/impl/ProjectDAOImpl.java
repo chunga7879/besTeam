@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class ProjectDAOImpl implements ProjectDAO {
@@ -20,13 +21,13 @@ public class ProjectDAOImpl implements ProjectDAO {
 
     @Override
     public Project save(Project project) {
-        projectRepository.save(project);
-        return project;
+        return projectRepository.save(project);
     }
 
     @Override
-    public Project getById(Long id) {
-        Project project = projectRepository.getById(id);
+    public Project getById(Long id) throws Exception {
+        Project project = projectRepository.findById(id).orElseThrow(() -> new Exception("no project exist matched with id"));
+
         return project;
     }
 
