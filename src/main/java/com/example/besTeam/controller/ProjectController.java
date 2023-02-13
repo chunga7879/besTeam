@@ -21,13 +21,13 @@ public class ProjectController {
     }
 
 
-    @PostMapping(value = "/create")
-    public ProjectDto create(@RequestBody CreateProjectDto createProjectDto) throws Exception {
-        ProjectValidation.checkProjectRoleNumber(createProjectDto.getNumPerGroup(), createProjectDto.getRoles());
-
-        ProjectDto project = projectService.create(createProjectDto.getName(), createProjectDto.getCategoryId(), createProjectDto.getNumPerGroup(), createProjectDto.getUserId());
-
-        return p
-    }
+//    @PostMapping(value = "/create")
+//    public ProjectDto create(@RequestBody CreateProjectDto createProjectDto) throws Exception {
+//        ProjectValidation.checkProjectRoleNumber(createProjectDto.getNumPerGroup(), createProjectDto.getRoles());
+//
+//        ProjectDto project = projectService.create(createProjectDto.getName(), createProjectDto.getCategoryId(), createProjectDto.getNumPerGroup(), createProjectDto.getUserId());
+//
+//        return project;
+//    }
 
 }

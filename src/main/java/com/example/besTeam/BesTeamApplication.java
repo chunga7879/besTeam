@@ -4,10 +4,10 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class BesTeamAtApplication {
+public class BesTeamApplication {
 
     public static void main(String[] args) {
-        SpringApplication.run(BesTeamAtApplication.class, args);
+        SpringApplication.run(BesTeamApplication.class, args);
     }
 
 }
