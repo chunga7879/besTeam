@@ -5,11 +5,11 @@ import com.example.besTeamAt.data.entity.Category;
 import java.util.List;
 
 public interface CategoryDAO {
-    Category saveCategory(Category category);
+    Category save(Category category);
 
-    Category deactivateCategory(Long id) throws Exception;
+    Category deactivate(Long id) throws Exception;
 
-    Category activateCategory(Long id) throws Exception;
+    Category activate(Long id) throws Exception;
 
     List<Category> getAll();
 

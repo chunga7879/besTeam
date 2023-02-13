@@ -1,11 +1,12 @@
 package com.example.besTeamAt.service;
 
 import com.example.besTeamAt.data.dto.CategoryDto;
+import com.example.besTeamAt.data.dto.RoleDto;
 
 import java.util.List;
 
 public interface CategoryService {
-    CategoryDto create(String name);
+//    CategoryDto create(String name, List<Long> roleIds);
 
     CategoryDto activate(Long id) throws Exception;
 

@@ -19,13 +19,13 @@ public class AbilityServiceImpl implements AbilityService {
 
     @Override
     public AbilityDto create(String name) {
-        Ability ability = abilityDAO.saveAbility(Ability.builder().name(name).build());
+        Ability ability = abilityDAO.save(Ability.builder().name(name).build());
         return ability.toDto();
     }
 
     @Override
     public AbilityDto getById(Long id) throws Exception {
-        Ability ability = abilityDAO.getAbilityById(id);
+        Ability ability = abilityDAO.getById(id);
         return ability.toDto();
     }
 }

@@ -20,7 +20,7 @@ public class ProjectServiceImpl implements ProjectService {
 
     @Override
     public ProjectDto create(String name, Category category, Integer numPerGroup, User user) {
-        Project project = projectDAO.saveProject(Project.builder().name(name).category(category).numPerGroup(numPerGroup).user(user).build());
+        Project project = projectDAO.save(Project.builder().name(name).category(category).numPerGroup(numPerGroup).user(user).build());
 
         return project.toDto();
     }

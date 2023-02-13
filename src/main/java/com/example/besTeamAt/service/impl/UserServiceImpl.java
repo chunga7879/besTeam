@@ -26,7 +26,7 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public UserDto createUser(UserDto userDto) {
-        User user = userDAO.saveUser(User.builder()
+        User user = userDAO.save(User.builder()
                 .name(userDto.getName())
                 .email(userDto.getEmail())
                 .password(userDto.getPassword()).build());

@@ -1,6 +1,7 @@
 package com.example.besTeamAt.controller;
 
 import com.example.besTeamAt.data.dto.CategoryDto;
+import com.example.besTeamAt.data.dto.RoleDto;
 import com.example.besTeamAt.data.entity.Category;
 import com.example.besTeamAt.service.CategoryService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,6 +10,7 @@ import org.springframework.web.bind.annotation.*;
 import javax.validation.Valid;
 import javax.websocket.server.PathParam;
 import java.util.List;
+import java.util.Map;
 
 @RestController
 @RequestMapping("/api/v1/category")
@@ -20,10 +22,10 @@ public class CategoryController {
         this.categoryService = categoryService;
     }
 
-    @PostMapping(value = "/create")
-    public CategoryDto create(@Valid @RequestParam String name) {
-        return categoryService.create(name);
-    }
+//    @PostMapping(value = "/create")
+//    public CategoryDto create(@Valid @RequestBody String name, @RequestBody List<Long> roleIds) {
+//        return categoryService.create(name, roleIds);
+//    }
 
     @GetMapping(value = "/all")
     public List<CategoryDto> getAll() {

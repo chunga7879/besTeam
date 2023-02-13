@@ -16,18 +16,18 @@ public class UserDAOImpl implements UserDAO {
         this.userRepository = userRepository;
     }
 
-    public User saveUser(User user) {
+    public User save(User user) {
         userRepository.save(user);
         return user;
     }
 
-    public User findById(Long id) throws Exception {
+    public User getById(Long id) throws Exception {
         User user = userRepository.findById(id).orElseThrow(() -> new Exception("user id"));
 
         return user;
     }
 
-    public User findByEmail(String email){
+    public User getByEmail(String email){
         User user = userRepository.findByEmail(email);
 
         return user;

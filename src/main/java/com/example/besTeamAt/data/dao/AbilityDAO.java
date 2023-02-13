@@ -3,7 +3,9 @@ package com.example.besTeamAt.data.dao;
 import com.example.besTeamAt.data.entity.Ability;
 
 public interface AbilityDAO {
-    Ability saveAbility(Ability ability);
+    Ability save(Ability ability);
 
-    Ability getAbilityById(Long id) throws Exception;
+    Ability getById(Long id) throws Exception;
+
+    Ability getByName(String name);
 }

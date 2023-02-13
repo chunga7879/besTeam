@@ -18,18 +18,18 @@ public class CategoryDAOImpl implements CategoryDAO {
     }
 
     @Override
-    public Category saveCategory(Category category) {
+    public Category save(Category category) {
         return categoryRepository.save(category);
     }
 
     @Override
-    public Category deactivateCategory(Long id) throws Exception {
+    public Category deactivate(Long id) throws Exception {
         categoryRepository.IsDestroyed(id, true);
         return categoryRepository.findById(id).orElseThrow(() -> new Exception("category by id not exist"));
     }
 
     @Override
-    public Category activateCategory(Long id) throws Exception {
+    public Category activate(Long id) throws Exception {
         categoryRepository.IsDestroyed(id, false);
         return categoryRepository.findById(id).orElseThrow(() -> new Exception("category by id not exist"));
     }

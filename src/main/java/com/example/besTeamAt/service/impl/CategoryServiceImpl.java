@@ -3,6 +3,7 @@ package com.example.besTeamAt.service.impl;
 import com.example.besTeamAt.data.dao.CategoryDAO;
 import com.example.besTeamAt.data.dto.CategoryDto;
 import com.example.besTeamAt.data.entity.Category;
+import com.example.besTeamAt.data.entity.Role;
 import com.example.besTeamAt.service.CategoryService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -13,6 +14,7 @@ import java.util.List;
 @Service
 public class CategoryServiceImpl implements CategoryService {
     private CategoryDAO categoryDAO;
+    private Role roleDAO;
 
     @Autowired
     public CategoryServiceImpl(CategoryDAO categoryDAO) {
@@ -20,21 +22,23 @@ public class CategoryServiceImpl implements CategoryService {
     }
 
 
-    @Override
-    public CategoryDto create(String name) {
-        Category category = categoryDAO.saveCategory(Category.builder().name(name).isDestroyed(false).build());
-        return category.toDto();
-    }
+//    @Override
+//    public CategoryDto create(String name) {
+//        Category category = categoryDAO.save(Category.builder().name(name).roles().isDestroyed(false).build());
+//
+//        return category.toDto(new ArrayList<>());
+//        return null;
+//    }
 
     @Override
     public CategoryDto activate(Long id) throws Exception {
-        Category category = categoryDAO.activateCategory(id);
+        Category category = categoryDAO.activate(id);
         return category.toDto();
     }
 
     @Override
     public CategoryDto deactivate(Long id) throws Exception {
-        Category category = categoryDAO.deactivateCategory(id);
+        Category category = categoryDAO.deactivate(id);
         return category.toDto();
     }
 

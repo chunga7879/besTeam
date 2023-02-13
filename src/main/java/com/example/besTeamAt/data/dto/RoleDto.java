@@ -9,7 +9,7 @@ import java.util.List;
 @Setter
 @Builder
 public class RoleDto {
+    private Long id;
     private String name;
-    private CategoryDto category;
     private List<AbilityDto> abilities;
 }

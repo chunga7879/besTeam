@@ -19,19 +19,19 @@ public class ProjectDAOImpl implements ProjectDAO {
     }
 
     @Override
-    public Project saveProject(Project project) {
+    public Project save(Project project) {
         projectRepository.save(project);
         return project;
     }
 
     @Override
-    public Project getProject(Long id) {
+    public Project getById(Long id) {
         Project project = projectRepository.getById(id);
         return project;
     }
 
     @Override
-    public List<Project> getProjectByUserId(Long userId) {
+    public List<Project> getByUserId(Long userId) {
         return projectRepository.findByUserId(userId);
     }
 }

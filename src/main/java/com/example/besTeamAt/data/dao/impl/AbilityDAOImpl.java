@@ -17,12 +17,17 @@ public class AbilityDAOImpl implements AbilityDAO {
     }
 
     @Override
-    public Ability saveAbility(Ability ability) {
+    public Ability save(Ability ability) {
         return abilityRepository.save(ability);
     }
 
     @Override
-    public Ability getAbilityById(Long id) throws Exception {
+    public Ability getById(Long id) throws Exception {
         return abilityRepository.findById(id).orElseThrow(() -> new Exception("ability by id not exist"));
+    }
+
+    @Override
+    public Ability getByName(String name) {
+        return abilityRepository.findByName(name);
     }
 }

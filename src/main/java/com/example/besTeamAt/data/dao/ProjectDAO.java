@@ -6,10 +6,10 @@ import java.util.List;
 
 public interface ProjectDAO {
 
-    Project saveProject(Project project);
+    Project save(Project project);
 
-    Project getProject(Long id);
+    Project getById(Long id);
 
-    List<Project> getProjectByUserId(Long userId);
+    List<Project> getByUserId(Long userId);
 }
 
