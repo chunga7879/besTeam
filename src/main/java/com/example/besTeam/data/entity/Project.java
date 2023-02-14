@@ -20,7 +20,7 @@ import java.util.Map;
 @Table(name = "project")
 public class Project extends BaseEntity{
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     @Column(nullable = false, length = 50)

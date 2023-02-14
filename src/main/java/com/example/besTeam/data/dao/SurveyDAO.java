@@ -7,5 +7,5 @@ public interface SurveyDAO {
 
     Survey getById(Long id) throws Exception;
 
-    Survey getByProjectId(Long projectId);
+    Survey getByProjectId(Long projectId) throws Exception;
 }

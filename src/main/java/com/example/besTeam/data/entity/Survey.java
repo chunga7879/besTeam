@@ -6,6 +6,8 @@ import lombok.*;
 import javax.persistence.*;
 import javax.validation.constraints.Max;
 import javax.validation.constraints.Min;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Getter
@@ -21,7 +23,7 @@ public class Survey {
     private Long id;
 
     @OneToOne
-    @JoinColumn(name = "survey_id")
+    @JoinColumn(name = "project_id")
     private Project project;
 
     // # to work together
@@ -56,6 +58,14 @@ public class Survey {
     @Max(value = 10)
     @Column(nullable = false)
     private Integer maxRangeAbilityRating;
+
+    @OneToMany(mappedBy = "survey",fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    private List<Participant> participants = new ArrayList<>();
+
+    public void addParticipant(Participant participant) {
+        participants.add(participant);
+    }
+
 
     public SurveyDto toDto() {
         return SurveyDto.builder()

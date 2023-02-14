@@ -26,7 +26,10 @@ public class SurveyDAOImpl implements SurveyDAO {
     }
 
     @Override
-    public Survey getByProjectId(Long projectId) {
-        return surveyRepository.findByProjectId(projectId);
+    public Survey getByProjectId(Long projectId) throws Exception {
+        if (surveyRepository.findByProjectId(projectId).size() != 1) {
+            throw new Exception("there is no or more than one survey created by project id" + projectId);
+        }
+        return surveyRepository.findByProjectId(projectId).get(0);
     }
 }

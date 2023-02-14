@@ -9,5 +9,8 @@ public interface ProjectRoleDAO {
 
     List<ProjectRole> getByProjectAndRole(ProjectRole projectRole);
 
+    List<ProjectRole> getByProjectId(Long projectId);
+
+
     ProjectRole updateNumForRole(ProjectRole projectRole);
 }

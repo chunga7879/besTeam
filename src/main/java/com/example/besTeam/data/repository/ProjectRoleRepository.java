@@ -13,4 +13,7 @@ public interface ProjectRoleRepository extends JpaRepository<ProjectRole, Long> 
 
     @Query(value = "UPDATE project_role SET num_for_role = ?2 WHERE id = ?1", nativeQuery = true)
     ProjectRole updateNumForRole(Long id, Integer numForRole);
+
+    @Query(value = "SELECT * FROM project_role pr WHERE project_id = ?1", nativeQuery = true)
+    List<ProjectRole> findByProjectId(Long projectId);
 }
