@@ -41,6 +41,9 @@ public class Project extends BaseEntity{
     @OneToMany(mappedBy = "project", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     private List<ProjectRole> projectRoles = new ArrayList<>();
 
+    @OneToOne(mappedBy = "project", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    private Survey survey;
+
     public void addProjectRole(ProjectRole projectRole) {
         projectRoles.add(projectRole);
     }

@@ -31,7 +31,8 @@ The professor wants to create teams based on students interest and ability.
 - List of roles for this project with how many people will be assigned for this role
 
 2. Survey
-- created by project
+- mapped with project  =>  will create question with project and survey options
+- PreOption
 
 3. Role
 - Name (ex. Java Back-end developer)
