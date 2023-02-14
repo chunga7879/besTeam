@@ -7,5 +7,7 @@ import org.springframework.stereotype.Service;
 public interface SurveyService {
     SurveyDto create(SurveyDto surveyDto) throws Exception;
 
-    SurveyDto getSurveyById(Long id);
+    SurveyDto getSurveyById(Long id) throws Exception;
+
+    SurveyDto getSurveyByProjectId(Long projectId) throws Exception;
 }

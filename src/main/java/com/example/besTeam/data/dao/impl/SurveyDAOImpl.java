@@ -16,12 +16,17 @@ public class SurveyDAOImpl implements SurveyDAO {
     }
 
     @Override
-    public Survey create(Survey survey) {
+    public Survey save(Survey survey) {
         return surveyRepository.save(survey);
     }
 
     @Override
     public Survey getById(Long id) throws Exception {
         return surveyRepository.findById(id).orElseThrow(() -> new Exception("survey matched with id does not exist"));
+    }
+
+    @Override
+    public Survey getByProjectId(Long projectId) {
+        return surveyRepository.findByProjectId(projectId);
     }
 }
