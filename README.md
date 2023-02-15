@@ -8,12 +8,19 @@ It is very important to form a group based on the ability and interest of people
 It will create a survey based on project information. Using answers of participants, it will create teams.  
 
 #### Future goal
-It can be extended to be used in the company to form a team for new projects.
+It can be extended to be used in the company to form a team for new projects
+with new fields such as how many teams it wants to form, possible time slots or previous experience.
 
-### UX
+#### Future goal 2
+- I want to develop the project to provide some space that the students use the web to progress their group work.
+- Providing some functionality to decide schedule, divide works, track progress and communicate/messages.
+(provide space for all about group working materials.)
 
 ##### Human need
-The professor wants to create teams based on students interest and ability. 
+Now: The professor wants to create teams based on students interest and ability. 
+
+Future goal 1: company form teams for their project to maximize employee's abilities and promote their interests. 
+Future goal 2: school provides students the best group work experience. 
 
 ##### Human tasks
 

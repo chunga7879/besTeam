@@ -1,10 +1,7 @@
 package com.example.besTeam.data.entity;
 
-
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
-import lombok.ToString;
+import com.example.besTeam.data.dto.ParticipantDto;
+import lombok.*;
 
 import javax.persistence.*;
 
@@ -19,15 +16,28 @@ public class Participant {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @ManyToOne
-    @JoinColumn(name = "survey_id")
-    private Survey survey;
-
     // TODO: If it extended for the company, it can be employee id
     @Column(nullable = false, unique = true)
     private Long studentNumber;
 
     @Column(nullable = false, unique = true)
     private String email;
+
+    @OneToOne
+    @JoinColumn(name = "answer_id")
+    private Answer answer;
+
+    @Builder
+    public Participant(Long id, Long studentNumber, String email, Answer answer) {
+        this.id = id;
+        this.studentNumber = studentNumber;
+        this.email = email;
+        this.answer = answer;
+    }
+
+    public ParticipantDto toDto() {
+        return ParticipantDto.builder().id(id).email(email)
+                .studentNumber(studentNumber).answer(answer.toDto()).build();
+    }
 
 }

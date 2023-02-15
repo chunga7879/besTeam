@@ -1,7 +1,6 @@
 package com.example.besTeam.validation;
 
 import com.example.besTeam.data.dto.ProjectRoleDto;
-import com.example.besTeam.data.dto.RoleDto;
 
 import java.util.List;
 import java.util.Map;
@@ -22,6 +21,7 @@ public class ProjectValidation {
         if (numPerGroup > totalNumberInProjectRole) {
             throw new Exception("It needs more people assigned for role to fulfill total number for a group in this project");
         }
-
     }
+
+    // TODO: LOTS OF VALIDATION NEEDED TO PREVENT UNEXPECTED ACTION
 }
