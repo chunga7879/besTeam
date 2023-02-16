@@ -14,5 +14,4 @@ public class ParticipantDto {
     // TODO: If it extended for the company, it can be employee id
     private Long studentNumber;
     private String email;
-    private AnswerDto answer;
 }

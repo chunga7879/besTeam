@@ -23,11 +23,6 @@ public class ProjectRoleDAOImpl implements ProjectRoleDAO {
     }
 
     @Override
-    public List<ProjectRole> getByProjectAndRole(ProjectRole projectRole) {
-        return projectRoleRepository.findByProjectAndRole(projectRole.getProject().getId(), projectRole.getRole().getId());
-    }
-
-    @Override
     public List<ProjectRole> getByProjectId(Long projectId) {
         return projectRoleRepository.findByProjectId(projectId);
     }

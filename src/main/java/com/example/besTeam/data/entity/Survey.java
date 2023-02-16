@@ -1,5 +1,6 @@
 package com.example.besTeam.data.entity;
 
+import com.example.besTeam.data.dto.ParticipantDto;
 import com.example.besTeam.data.dto.SurveyDto;
 import lombok.*;
 
@@ -16,14 +17,17 @@ import java.util.List;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-@Table(name = "survey")
+@Table(name = "survey", uniqueConstraints = {@UniqueConstraint(name = "ProjectAndSurveyName", columnNames = { "name", "project_id" })})
 public class Survey {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @OneToOne
-    @JoinColumn(name = "project_id")
+    @Column(nullable = false, length = 50)
+    private String name;
+
+    @ManyToOne
+    @JoinColumn(name="project_id")
     private Project project;
 
     // # to work together
@@ -59,7 +63,8 @@ public class Survey {
     @Column(nullable = false)
     private Integer maxRangeAbilityRating;
 
-    @OneToMany(mappedBy = "survey",fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @JoinColumn(name="survey_id")
     private List<Participant> participants = new ArrayList<>();
 
     public void addParticipant(Participant participant) {
@@ -68,8 +73,15 @@ public class Survey {
 
 
     public SurveyDto toDto() {
+        List<ParticipantDto> participantDTOs = new ArrayList<>();
+
+        for (Participant participant : participants) {
+            participantDTOs.add(participant.toDto());
+        }
+
         return SurveyDto.builder()
                 .id(id)
+                .name(name)
                 .project(project.toDto())
                 .isAllowWritePreferTeamMates(isAllowWritePreferTeamMates)
                 .preferPersonOptionMax(preferPersonOptionMax)
@@ -79,6 +91,7 @@ public class Survey {
                 .isPossibleSameAbilityRating(isPossibleSameAbilityRating)
                 .minRangeAbilityRating(minRangeAbilityRating)
                 .maxRangeAbilityRating(maxRangeAbilityRating)
+                .participants(participantDTOs)
                 .build();
     }
 }

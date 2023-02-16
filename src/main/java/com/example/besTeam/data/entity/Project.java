@@ -38,11 +38,9 @@ public class Project extends BaseEntity{
     @JoinColumn(name = "user_id")
     private User user;
 
-    @OneToMany(mappedBy = "project", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @OneToMany
+    @JoinColumn(name = "project_id")
     private List<ProjectRole> projectRoles = new ArrayList<>();
-
-    @OneToOne(mappedBy = "project", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-    private Survey survey;
 
     public void addProjectRole(ProjectRole projectRole) {
         projectRoles.add(projectRole);

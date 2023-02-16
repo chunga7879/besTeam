@@ -4,15 +4,14 @@ import lombok.Builder;
 import lombok.Getter;
 import lombok.Setter;
 
-import javax.persistence.Column;
-import javax.validation.constraints.Max;
-import javax.validation.constraints.Min;
+import java.util.List;
 
 @Getter
 @Setter
 @Builder
 public class SurveyDto {
     private Long id;
+    private String name;
     private ProjectDto project;
     private boolean isAllowWritePreferTeamMates;
     private Integer preferPersonOptionMax;
@@ -22,4 +21,5 @@ public class SurveyDto {
     private boolean isPossibleSameAbilityRating;
     private Integer minRangeAbilityRating;
     private Integer maxRangeAbilityRating;
+    private List<ParticipantDto> participants;
 }

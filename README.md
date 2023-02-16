@@ -25,7 +25,13 @@ Future goal 2: school provides students the best group work experience.
 ##### Human tasks
 
 
-### Functions
+### Functions (API)
+1. Create User
+2. Create/Get Project
+3. Create/Get Role
+4. Create/Get Survey
+5. Create/Get Participant
+6. Create Answers
 
 
 ### Objects 

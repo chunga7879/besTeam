@@ -15,7 +15,7 @@ import java.util.List;
 @NoArgsConstructor
 // connected with role and project
 @Table(name = "category")
-public class Category {
+public class Category extends BaseEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;

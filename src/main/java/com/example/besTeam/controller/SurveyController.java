@@ -5,6 +5,8 @@ import com.example.besTeam.service.SurveyService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
 @RequestMapping("/api/v1/survey")
 public class SurveyController {
@@ -20,8 +22,13 @@ public class SurveyController {
         return surveyService.create(surveyDto);
     }
 
-    @GetMapping()
-    public SurveyDto getByProjectId(@RequestParam Long projectId) throws Exception {
+    @GetMapping("/{id}")
+    public SurveyDto getById(@PathVariable Long id) throws Exception {
+        return surveyService.getSurveyById(id);
+    }
+
+    @GetMapping("/project/{projectId}")
+    public List<SurveyDto> getByProjectId(@PathVariable Long projectId) throws Exception {
         return surveyService.getSurveyByProjectId(projectId);
     }
 }

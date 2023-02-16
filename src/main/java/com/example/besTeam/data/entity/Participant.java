@@ -1,9 +1,11 @@
 package com.example.besTeam.data.entity;
 
+import com.example.besTeam.data.dto.AnswerDto;
 import com.example.besTeam.data.dto.ParticipantDto;
 import lombok.*;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 @Getter
@@ -11,7 +13,7 @@ import javax.persistence.*;
 @ToString
 @NoArgsConstructor
 @Table(name = "participant")
-public class Participant {
+public class Participant extends BaseEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -23,21 +25,16 @@ public class Participant {
     @Column(nullable = false, unique = true)
     private String email;
 
-    @OneToOne
-    @JoinColumn(name = "answer_id")
-    private Answer answer;
-
     @Builder
-    public Participant(Long id, Long studentNumber, String email, Answer answer) {
+    public Participant(Long id, Long studentNumber, String email) {
         this.id = id;
         this.studentNumber = studentNumber;
         this.email = email;
-        this.answer = answer;
     }
 
     public ParticipantDto toDto() {
+        // most recent
         return ParticipantDto.builder().id(id).email(email)
-                .studentNumber(studentNumber).answer(answer.toDto()).build();
+                .studentNumber(studentNumber).build();
     }
-
 }

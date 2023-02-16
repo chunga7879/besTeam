@@ -1,9 +1,6 @@
 package com.example.besTeam.data.entity;
 
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
-import lombok.ToString;
+import lombok.*;
 
 import javax.persistence.*;
 
@@ -13,7 +10,7 @@ import javax.persistence.*;
 @ToString
 @NoArgsConstructor
 @Table(name = "role_answer")
-public class RoleAnswer {
+public class RoleAnswer extends BaseEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -24,4 +21,11 @@ public class RoleAnswer {
 
     // preference (from min - max)
     private Integer preference;
+
+    @Builder
+    public RoleAnswer(Long id, Role role, Integer preference) {
+        this.id = id;
+        this.role = role;
+        this.preference = preference;
+    }
 }

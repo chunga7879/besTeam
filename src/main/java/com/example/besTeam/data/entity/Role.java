@@ -22,8 +22,8 @@ public class Role extends BaseEntity {
     @Column(nullable = false, length = 50)
     private String name;
 
-    @OneToMany(mappedBy = "role", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-    private List<ProjectRole> projectRoles = new ArrayList<>();
+//    @OneToMany(mappedBy = "role", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+//    private List<ProjectRole> projectRoles = new ArrayList<>();
 
     @ManyToMany
     @JoinTable(name = "role_ability"
@@ -35,9 +35,9 @@ public class Role extends BaseEntity {
         abilities.add(ability);
     }
 
-    public void addProjectRole(ProjectRole projectRole) {
-        projectRoles.add(projectRole);
-    }
+//    public void addProjectRole(ProjectRole projectRole) {
+//        projectRoles.add(projectRole);
+//    }
 
     @Builder
     public Role(Long id, String name) {

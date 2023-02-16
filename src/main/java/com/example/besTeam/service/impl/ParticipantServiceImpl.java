@@ -32,9 +32,8 @@ public class ParticipantServiceImpl implements ParticipantService {
                 .email(participantDto.getEmail())
                 .studentNumber(participantDto.getStudentNumber())
                 .build();
-        participant = participantDAO.save(participant);
-
         survey.addParticipant(participant);
+        participant = participantDAO.save(participant);
 
         return participant.toDto();
     }

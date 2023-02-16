@@ -13,14 +13,10 @@ import javax.validation.constraints.Min;
 @ToString
 @NoArgsConstructor
 @Table(name = "project_role", uniqueConstraints = {@UniqueConstraint(name = "ProjectAndRole", columnNames = { "project_id", "role_id" })})
-public class ProjectRole {
+public class ProjectRole extends BaseEntity{
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-
-    @ManyToOne
-    @JoinColumn(name = "project_id")
-    private Project project;
 
     @ManyToOne
     @JoinColumn(name = "role_id")
@@ -32,8 +28,7 @@ public class ProjectRole {
     private Integer numForRole;
 
     @Builder
-    public ProjectRole(Project project, Role role, Integer numForRole) {
-        this.project = project;
+    public ProjectRole(Role role, Integer numForRole) {
         this.role = role;
         this.numForRole = numForRole;
     }

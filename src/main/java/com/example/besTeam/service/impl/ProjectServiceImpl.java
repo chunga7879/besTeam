@@ -37,13 +37,12 @@ public class ProjectServiceImpl implements ProjectService {
 
         for (ProjectRoleDto pr : roles) {
             Role role = roleDAO.getRoleById(pr.getRole().getId());
-            ProjectRole projectRole = ProjectRole.builder().project(project).role(role).numForRole(pr.getNumForRole()).build();
+            ProjectRole projectRole = ProjectRole.builder().role(role).numForRole(pr.getNumForRole()).build();
 
+            projectRoleDAO.create(projectRole);
             projectRole = projectRoleDAO.create(projectRole);
             project.addProjectRole(projectRole);
-            role.addProjectRole(projectRole);
         }
-
         return project.toDto();
     }
 
@@ -60,23 +59,23 @@ public class ProjectServiceImpl implements ProjectService {
 
         // TODO: VALIDATION FOR TOTAL NUMBER PER ROLE DOES NOT EXCEED NUM PER GROUP
 
-        for (ProjectRoleDto pr : roles) {
-            Role role = roleDAO.getRoleById(pr.getRole().getId());
-            ProjectRole projectRole = ProjectRole.builder().project(project).role(role).numForRole(pr.getNumForRole()).build();
-
-            switch (projectRoleDAO.getByProjectAndRole(projectRole).size()) {
-                case 0 :
-                    projectRole = projectRoleDAO.create(projectRole);
-                    project.addProjectRole(projectRole);
-                    break;
-                case 1:
-                    projectRole = projectRoleDAO.getByProjectAndRole(projectRole).get(0);
-                    projectRoleDAO.updateNumForRole(projectRole);
-                    break;
-                default:
-                    throw new Exception("unique constraint does not work");
-            }
-        }
+//        for (ProjectRoleDto pr : roles) {
+//            Role role = roleDAO.getRoleById(pr.getRole().getId());
+//            ProjectRole projectRole = ProjectRole.builder().project(project).role(role).numForRole(pr.getNumForRole()).build();
+//
+//            switch (projectRoleDAO.getByProjectAndRole(projectRole).size()) {
+//                case 0 :
+//                    projectRole = projectRoleDAO.create(projectRole);
+//                    project.addProjectRole(projectRole);
+//                    break;
+//                case 1:
+//                    projectRole = projectRoleDAO.getByProjectAndRole(projectRole).get(0);
+//                    projectRoleDAO.updateNumForRole(projectRole);
+//                    break;
+//                default:
+//                    throw new Exception("unique constraint does not work");
+//            }
+//        }
 
         return project.toDto();
     }

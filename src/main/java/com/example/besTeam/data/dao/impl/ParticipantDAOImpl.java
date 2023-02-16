@@ -23,6 +23,11 @@ public class ParticipantDAOImpl implements ParticipantDAO {
     }
 
     @Override
+    public Participant getById(Long id) throws Exception {
+        return participantRepository.findById(id).orElseThrow(() -> new Exception("Participant matched by id does not exist"));
+    }
+
+    @Override
     public List<Participant> getParticipantsBySurveyId(Long surveyId) {
         return participantRepository.getParticipantsBySurveyId(surveyId);
     }

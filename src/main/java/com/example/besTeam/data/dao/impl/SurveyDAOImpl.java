@@ -6,6 +6,8 @@ import com.example.besTeam.data.repository.SurveyRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class SurveyDAOImpl implements SurveyDAO {
     private SurveyRepository surveyRepository;
@@ -26,10 +28,7 @@ public class SurveyDAOImpl implements SurveyDAO {
     }
 
     @Override
-    public Survey getByProjectId(Long projectId) throws Exception {
-        if (surveyRepository.findByProjectId(projectId).size() != 1) {
-            throw new Exception("there is no or more than one survey created by project id" + projectId);
-        }
-        return surveyRepository.findByProjectId(projectId).get(0);
+    public List<Survey> getAllByProjectId(Long projectId) {
+        return surveyRepository.findByProjectId(projectId);
     }
 }

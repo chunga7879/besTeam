@@ -17,4 +17,5 @@ public class AnswerDto {
     private List<PreferMateAnswer> preferMateAnswers = new ArrayList<>();
     private List<RoleAnswer> roleAnswers = new ArrayList<>();
     private List<AbilityAnswer> abilityAnswers = new ArrayList<>();
+    private ParticipantDto participant;
 }
